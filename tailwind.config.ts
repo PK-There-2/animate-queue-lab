@@ -47,6 +47,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        queue: {
+          cell: "hsl(var(--queue-cell))",
+          filled: "hsl(var(--queue-cell-filled))",
+          hover: "hsl(var(--queue-cell-hover))",
+          pointer: "hsl(var(--queue-pointer))",
+          front: "hsl(var(--queue-front))",
+          rear: "hsl(var(--queue-rear))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -80,10 +88,53 @@ export default {
             height: "0",
           },
         },
+        "queue-enqueue": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0.8) translateY(-20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1) translateY(0)",
+          },
+        },
+        "queue-dequeue": {
+          "0%": {
+            opacity: "1",
+            transform: "scale(1) translateY(0)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "scale(0.8) translateY(-20px)",
+          },
+        },
+        "pointer-move": {
+          "0%": {
+            transform: "translateX(0) scale(1)",
+          },
+          "50%": {
+            transform: "translateX(var(--move-distance)) scale(1.1)",
+          },
+          "100%": {
+            transform: "translateX(var(--move-distance)) scale(1)",
+          },
+        },
+        "pulse-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsl(var(--queue-pointer) / 0.5)",
+          },
+          "50%": {
+            boxShadow: "0 0 30px hsl(var(--queue-pointer) / 0.8)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "queue-enqueue": "queue-enqueue 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "queue-dequeue": "queue-dequeue 0.3s ease-in",
+        "pointer-move": "pointer-move 0.5s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
     },
   },
